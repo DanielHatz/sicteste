@@ -33,7 +33,7 @@ jobs:
           SSH_EXTRA_ARGS: -v
           SCRIPT_BEFORE: rm -rf /home/jelastic/ROOT/*
           SCRIPT_BEFORE_REQUIRED: true
-          SCRIPT_AFTER: npm install && nohup node index.js &
+          SCRIPT_AFTER: npm install
           SCRIPT_AFTER_REQUIRED: true
           
 
