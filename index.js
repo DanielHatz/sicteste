@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 
 // Definir a versão da API
-let apiVersion = '1.0.0';  // A versão pode ser atualizada no CI/CD
+let apiVersion = '2.0.1';  // A versão pode ser atualizada no CI/CD
 
 // Rota para o endpoint /nome
 app.get('/:nome', (req, res) => {
