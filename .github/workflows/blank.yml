@@ -13,27 +13,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    #checkout
+      #checkout
       - name: Code Checkout
         uses: actions/checkout@v3
-    #set up nodejs
+      #set up nodejs
       - name: Node.JS setup
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
-          
+          node-version: "20"
+
       - name: ssh deploy
         uses: easingthemes/ssh-deploy@v5.1.0
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_HOST: 200.150.207.192
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          REMOTE_PORT: 3022
+          REMOTE_PORT: 22
           TARGET: ${{ secrets.TARGET }}
           SSH_EXTRA_ARGS: -v
           SCRIPT_BEFORE: rm -rf /home/jelastic/ROOT/*
           SCRIPT_BEFORE_REQUIRED: true
           SCRIPT_AFTER: npm install
           SCRIPT_AFTER_REQUIRED: true
-          
-
