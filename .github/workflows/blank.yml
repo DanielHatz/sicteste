@@ -33,5 +33,9 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_PORT: 22
           TARGET: ${{ secrets.TARGET }}
+          SCRIPT_BEFORE: rm -rf /home/jelastic/ROOT/*
+          SCRIPT_BEFORE_REQUIRED: true
           SCRIPT_AFTER: npm run install && nohup node index.js &
+          SCRIPT_AFTER_REQUIRED: true
+          
 
