@@ -1,0 +1,41 @@
+#Nome da pipeline
+name: NodeJSAPI
+
+#configurar triggers
+on:
+  #quando houver o push na branch main
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    #checkout
+      - name: Code Checkout
+        uses: actions/checkout@v3
+    #set up nodejs
+      - name: Node.JS setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+        
+      - name: ssh deploy
+        uses: easingthemes/ssh-deploy@v5.1.0
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_PORT: 22
+          TARGET: ${{ secrets.TARGET }}
+          SCRIPT_BEFORE: rm -rf /home/jelastic/ROOT/*
+          SCRIPT_BEFORE_REQUIRED: true
+          SCRIPT_AFTER: npm run install && nohup node index.js &
+          SCRIPT_AFTER_REQUIRED: true
+          
+
