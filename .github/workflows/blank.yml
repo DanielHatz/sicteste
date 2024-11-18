@@ -28,10 +28,10 @@ jobs:
       - name: ssh deploy
         uses: easingthemes/ssh-deploy@v5.1.0
         with:
-          SSH_PRIVATE_KEY: ${secrets.SSH_PRIVATE_KEY}
-          REMOTE_HOST: ${secrets.REMOTE_HOST}
-          REMOTE_USER: ${secrets.REMOTE_USER}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_PORT: 22
-          TARGET: ${secrets.TARGET}
+          TARGET: ${{ secrets.TARGET }}
           SCRIPT_AFTER: npm run install && nohup node index.js &
-          SCRIPT_AFTER_REQUIRED: true
+
