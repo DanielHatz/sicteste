@@ -26,9 +26,9 @@ jobs:
         uses: easingthemes/ssh-deploy@v5.1.0
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: 200.150.207.192
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          REMOTE_PORT: 22
+          REMOTE_PORT: 3022
           TARGET: ${{ secrets.TARGET }}
           SSH_EXTRA_ARGS: -v
           SCRIPT_BEFORE: rm -rf /home/jelastic/ROOT/*
