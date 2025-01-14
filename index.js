@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 5000;
 
 // Definir a versão da API
 let apiVersion = '2.0.3';  // A versão pode ser atualizada no CI/CD
